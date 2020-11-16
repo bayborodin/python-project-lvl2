@@ -1,0 +1,1 @@
+"""Gendiff - comparison utility."""
