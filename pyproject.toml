@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "gendiff - the second Hexlet project"
 authors = ["Nicholas Bayborodin <nicholas.bayborodin@gmail.com>"]
 packages = [
-    { include = "gendiff" }
+    { include = "gendiff" },
 ]
 
 [tool.poetry.dependencies]
