@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "hexlet_code"
+name = "gendiff"
 version = "0.1.0"
 description = "gendiff - the second Hexlet project"
 authors = ["Nicholas Bayborodin <nicholas.bayborodin@gmail.com>"]

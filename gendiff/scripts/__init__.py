@@ -1,1 +1,1 @@
-"""Gendiff package."""
+"""Gendiff scripts."""
