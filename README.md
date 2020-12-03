@@ -1,3 +1,11 @@
+# Gendiff
+[![Maintainability](https://api.codeclimate.com/v1/badges/a4bb2bcb4ba0d791eb18/maintainability)](https://codeclimate.com/github/bayborodin/python-project-lvl2/maintainability)
+[![wemake-python-styleguide](https://img.shields.io/badge/style-wemake-000000.svg)](https://github.com/wemake-services/wemake-python-styleguide)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+The second training project on the Python Software Development course on [Hexlet.io](https://ru.hexlet.io/professions/python/projects/50)
+
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/bayborodin/python-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/bayborodin/python-project-lvl2/actions)
 
