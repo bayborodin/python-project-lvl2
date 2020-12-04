@@ -11,9 +11,6 @@ run:
 	@poetry run gendiff ~/file1.json ~/file2.json
 
 test:
-	@poetry run pytest gendiff tests
+	@poetry run pytest --cov=gendiff tests/ --cov-report xml
 
-coverage:
-	@poetry run pytest --cov=gendiff
-
-.PHONY: install build lint run test coverage
+.PHONY: install build lint run test
