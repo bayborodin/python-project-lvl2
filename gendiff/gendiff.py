@@ -41,7 +41,7 @@ def _get_diff_string_representation(diff: list) -> str:
         The string representation of the diff.
     """
     diffs = []
-    diffs.append('\n{\n')
+    diffs.append('{\n')
     for string in diff:
         diffs.append(_format_diff_string(string))
 
