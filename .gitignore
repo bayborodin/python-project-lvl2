@@ -37,3 +37,7 @@ dist/
 ### VisualStudioCode ###
 .vscode/
 .history
+
+# Test files
+.coverage
+coverage.xml
