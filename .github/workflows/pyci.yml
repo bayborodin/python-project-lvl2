@@ -24,6 +24,17 @@ jobs:
       - name: Run linter and pytest
         run: |
           make check
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: |
+          pip install poetry
+          make install
       - name: Codeclimate test coverage
         run: |
           export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
