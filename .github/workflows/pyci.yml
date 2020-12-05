@@ -35,6 +35,9 @@ jobs:
         run: |
           pip install poetry
           make install
+      - name: Run linter and pytest
+        run: |
+          make check
       - name: Codeclimate test coverage
         run: |
           export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
