@@ -1,6 +1,6 @@
 """Diff builder."""
 
-import json
+from gendiff.reader import read_data
 
 
 def generate_diff(file_path1: str, file_path2: str) -> str:
@@ -14,16 +14,28 @@ def generate_diff(file_path1: str, file_path2: str) -> str:
     Returns:
         Diff of the given files.
     """
-    json1 = _read_json_file(file_path1)
-    json2 = _read_json_file(file_path2)
+    dict1, dict2 = read_data(file_path1, file_path2)
+    return _generate_dicts_diff(dict1, dict2)
 
-    keys = json1.keys() | json2.keys()
+
+def _generate_dicts_diff(dict1, dict2) -> str:
+    """
+    Generate a diff for a given json files.
+
+    Parameters:
+        dict1: A path to the first json file.
+        dict2: A path to the second json file.
+
+    Returns:
+        Diff of the given json files.
+    """
+    keys = dict1.keys() | dict2.keys()
     diff = []
     for key in keys:
         diff.append({
             'param': key,
-            'old': _get_json_value(json1, key),
-            'new': _get_json_value(json2, key),
+            'old': _get_json_value(dict1, key),
+            'new': _get_json_value(dict2, key),
         })
     diff.sort(key=lambda diff_string: diff_string['param'])
 
@@ -70,20 +82,6 @@ def _format_diff_string(string: str) -> str:
         return ' + {0}: {1}\n'.format(parameter, new_val)
     elif old_val != new_val:
         return ' - {0}: {1}\n + {0}: {2}\n'.format(parameter, old_val, new_val)
-
-
-def _read_json_file(filename: str):
-    """
-    Read a file from a given filename to json.
-
-    Parameters:
-        filename: The name of file to read.
-
-    Returns:
-        Dictionary with json data.
-    """
-    with open(filename) as json_file:
-        return json.load(json_file)
 
 
 def _get_json_value(json_string, key):
