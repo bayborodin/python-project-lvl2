@@ -12,35 +12,57 @@ def compare(dict1: dict, dict2: dict) -> list:
     Returns:
         Diff of the given dictionaries.
     """
-    all_keys = dict1.keys() | dict2.keys()
-    removed_keys = dict1.keys() - dict2.keys()
-    added_keys = dict2.keys() - dict1.keys()
+    collected_keys = _collect_keys(dict1, dict2)
 
     diff = []
 
-    for key in all_keys:
-        if key in removed_keys:
+    for key in collected_keys['all_keys']:
+        diff_value1 = dict1.get(key, {})
+        diff_value2 = dict2.get(key, {})
+        if key in collected_keys['removed_keys']:
             diff.append(
                 _generate_diff_row(
-                    key, dict1[key], 'removed',
+                    key,
+                    compare(diff_value1, diff_value1) if isinstance(
+                        diff_value1, dict,
+                    ) else diff_value1,
+                    'removed',
                 ),
             )
-        elif key in added_keys:
+        elif key in collected_keys['added_keys']:
             diff.append(
                 _generate_diff_row(
-                    key, dict2[key], 'added',
+                    key,
+                    compare(diff_value2, diff_value2) if isinstance(
+                        diff_value2, dict,
+                    ) else diff_value2,
+                    'added',
                 ),
             )
-        elif dict1[key] == dict2[key]:
+        elif diff_value1 == diff_value2:
             diff.append(
                 _generate_diff_row(
-                    key, dict1[key], 'unmodified',
+                    key,
+                    compare(diff_value1, diff_value2) if isinstance(
+                        diff_value1, dict,
+                    ) else diff_value1,
+                    'unmodified',
+                ),
+            )
+        elif isinstance(diff_value1, dict) and isinstance(diff_value2, dict):
+            diff.append(
+                _generate_diff_row(
+                    key,
+                    compare(diff_value1, diff_value2),
+                    'unmodified',
                 ),
             )
         else:
             diff.append(
                 _generate_diff_row(
-                    key, {'old': dict1[key], 'new': dict2[key]}, 'updated',
+                    key,
+                    _generate_nested_diff(dict1, dict2, key),
+                    'updated',
                 ),
             )
 
@@ -49,3 +71,22 @@ def compare(dict1: dict, dict2: dict) -> list:
 
 def _generate_diff_row(diff_key, diff_value, diff_state):
     return {'key': diff_key, 'value': diff_value, 'state': diff_state}
+
+
+def _generate_nested_diff(dict1, dict2, key):
+    diff_value1 = dict1[key]
+    diff_value2 = dict2[key]
+    return {
+        'old': compare(diff_value1, diff_value1)
+        if isinstance(diff_value1, dict) else diff_value1,
+        'new': compare(diff_value2, diff_value2)
+        if isinstance(diff_value2, dict) else diff_value2,
+    }
+
+
+def _collect_keys(dict1, dict2):
+    return {
+        'all_keys': dict1.keys() | dict2.keys(),
+        'removed_keys': dict1.keys() - dict2.keys(),
+        'added_keys': dict2.keys() - dict1.keys(),
+    }
