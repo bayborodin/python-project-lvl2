@@ -10,3 +10,13 @@ def test_stylish_formatter():
         expected = file_descriptor.read()
 
     assert(result == expected)
+
+
+def test_stylish_nested_formatter():
+    data = read_data("tests/fixtures/expected/compare_nested.json")["diff"]
+    result = stylish(data)
+
+    with open("tests/fixtures/expected/format_stylish_nested.txt") as file_descriptor:
+        expected = file_descriptor.read()
+
+    assert(result == expected)

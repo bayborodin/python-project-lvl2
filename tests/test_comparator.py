@@ -51,3 +51,20 @@ def test_diff_nested_json_reversed():
         'tests/fixtures/expected/compare_nested_reversed.json')['diff']
     result = compare(data2, data1)
     assert(result == expected)
+
+
+def test_diff_nested_yaml():
+    data1 = read_data('tests/fixtures/input_yaml/nested_data1.yml')
+    data2 = read_data('tests/fixtures/input_yaml/nested_data2.yml')
+    expected = read_data('tests/fixtures/expected/compare_nested.json')['diff']
+    result = compare(data1, data2)
+    assert(result == expected)
+
+
+def test_diff_nested_yaml_reversed():
+    data1 = read_data('tests/fixtures/input_yaml/nested_data1.yml')
+    data2 = read_data('tests/fixtures/input_yaml/nested_data2.yml')
+    expected = read_data(
+        'tests/fixtures/expected/compare_nested_reversed.json')['diff']
+    result = compare(data2, data1)
+    assert(result == expected)
