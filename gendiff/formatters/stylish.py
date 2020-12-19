@@ -1,7 +1,7 @@
 """Diff result formatter."""
 import types
 
-from gendiff.format_utils import (
+from gendiff.formatters.format_utils import (
     build_diff_dict,
     build_string_from_list,
     get_row_dict_values,
@@ -17,7 +17,7 @@ STATES = types.MappingProxyType({
 })
 
 
-def stylish(diff: list) -> str:
+def format_diff(diff: list) -> str:
     """
     Format diff resuls as strings with indents.
 
