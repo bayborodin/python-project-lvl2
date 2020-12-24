@@ -1,12 +1,13 @@
 """Diff output format selector."""
 import types
 
-from gendiff.formatters import stylish
+from gendiff.formatters import plain, stylish
 
 DEFAULT_FORMAT = 'stylish'
 
 FORMATS = types.MappingProxyType({
     'stylish': stylish,
+    'plain': plain,
 })
 
 

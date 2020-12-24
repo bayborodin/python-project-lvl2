@@ -1,4 +1,4 @@
-"""Diff result formatter."""
+"""Diff result stylish formatter."""
 import types
 
 from gendiff.formatters.format_utils import (
