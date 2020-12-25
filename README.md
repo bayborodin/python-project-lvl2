@@ -12,3 +12,9 @@ The second training project on the Python Software Development course on [Hexlet
 
 ## Demo
 [![asciicast](https://asciinema.org/a/MfOZcLZQlgldKEGHyAAIwS8vf.svg)](https://asciinema.org/a/MfOZcLZQlgldKEGHyAAIwS8vf)
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)

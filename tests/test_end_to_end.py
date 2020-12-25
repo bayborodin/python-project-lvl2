@@ -7,8 +7,8 @@ def test_diff_and_format_json():
         'tests/fixtures/input_json/flat_data2.json'
     )
 
-    with open("tests/fixtures/expected/format_stylish.txt") as file_descriptor:
-        expected = file_descriptor.read()
+    with open("tests/fixtures/expected/format_stylish.txt") as f:
+        expected = f.read()
 
     assert(result == expected)
 
@@ -21,8 +21,8 @@ def test_diff_and_format_json_nested():
 
     with open(
         "tests/fixtures/expected/format_stylish_nested.txt"
-    ) as file_descriptor:
-        expected = file_descriptor.read()
+    ) as f:
+        expected = f.read()
 
     assert(result == expected)
 
@@ -33,8 +33,8 @@ def test_diff_and_format_yaml():
         'tests/fixtures/input_yaml/flat_data2.yml'
     )
 
-    with open("tests/fixtures/expected/format_stylish.txt") as file_descriptor:
-        expected = file_descriptor.read()
+    with open("tests/fixtures/expected/format_stylish.txt") as f:
+        expected = f.read()
 
     assert(result == expected)
 
@@ -47,7 +47,37 @@ def test_diff_and_format_yaml_stylish():
 
     with open(
         "tests/fixtures/expected/format_stylish_nested.txt"
-    ) as file_descriptor:
-        expected = file_descriptor.read()
+    ) as f:
+        expected = f.read()
+
+    assert(result == expected)
+
+
+def test_diff_and_format_json_plain():
+    result = generate_diff(
+        'tests/fixtures/input_json/nested_data1.json',
+        'tests/fixtures/input_json/nested_data2.json',
+        format_name='plain'
+    )
+
+    with open(
+        "tests/fixtures/expected/format_plain_nested.txt"
+    ) as f:
+        expected = f.read()
+
+    assert(result == expected)
+
+
+def test_diff_and_format_yaml_json():
+    result = generate_diff(
+        'tests/fixtures/input_yaml/nested_data1.yml',
+        'tests/fixtures/input_yaml/nested_data2.yml',
+        format_name='json',
+    )
+
+    with open(
+        "tests/fixtures/expected/format_json_output.txt"
+    ) as f:
+        expected = f.read()
 
     assert(result == expected)

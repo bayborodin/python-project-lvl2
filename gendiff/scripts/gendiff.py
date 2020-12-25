@@ -18,7 +18,7 @@ def main():
         output_format = DEFAULT_FORMAT
 
     diff = generate_diff(
-        args.first_file, args.second_file, fmt=output_format,
+        args.first_file, args.second_file, format_name=output_format,
     )
     print(diff)
 
