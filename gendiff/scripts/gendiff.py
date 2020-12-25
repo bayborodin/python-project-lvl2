@@ -1,5 +1,6 @@
 """A gendiff utility startup script."""
 import argparse
+
 import pkg_resources
 
 from gendiff import generate_diff
@@ -14,8 +15,9 @@ def main():
     parser.add_argument('-f', '--format', help='set format of output')
 
     app_version = pkg_resources.get_distribution('gendiff').version
-    parser.add_argument('-V', '--version', action='version',
-                        version=app_version)
+    parser.add_argument(
+        '-V', '--version', action='version', version=app_version,
+    )
 
     args = parser.parse_args()
     output_format = args.format
