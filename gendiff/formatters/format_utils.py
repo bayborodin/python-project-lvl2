@@ -52,7 +52,7 @@ def stringify_added_row(row: tuple) -> str:
     Returns:
         The plain string representation of the row.
     """
-    return "Property '{0}' was added with value: {1}\n".format(
+    return "Property '{0}' was added with value: {1}".format(
         row[0],
         format_value(row[1]),
     )
@@ -68,7 +68,7 @@ def stringify_updated_row(row: tuple) -> str:
     Returns:
         The plain string representation of the row.
     """
-    return "Property '{0}' was updated. From {1} to {2}\n".format(
+    return "Property '{0}' was updated. From {1} to {2}".format(
         row[0],
         format_value(row[1]['old']),
         format_value(row[1]['new']),
@@ -85,7 +85,7 @@ def stringify_removed_row(row: tuple) -> str:
     Returns:
         The plain string representation of the row.
     """
-    return "Property '{0}' was removed\n".format(
+    return "Property '{0}' was removed".format(
         row[0],
     )
 
@@ -106,5 +106,8 @@ def format_value(row_value: any) -> str:
         return 'null'
     if isinstance(row_value, bool):
         return str(row_value).lower()
+
+    if isinstance(row_value, int):
+        return row_value
 
     return "'{0}'".format(row_value)

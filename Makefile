@@ -8,7 +8,7 @@ autotest:
 	poetry run pytest --cov=gendiff --cov-report xml tests/
 
 test:
-	poetry run pytest --cov=gendiff
+	poetry run pytest  -vv --color=yes --cov=gendiff
 
 selfcheck:
 	poetry check

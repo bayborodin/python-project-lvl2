@@ -21,6 +21,7 @@ def generate_diff(
     """
     data_collection1 = read_data(file_path1)
     data_collection2 = read_data(file_path2)
+
     diff = compare(data_collection1, data_collection2)
 
     return format_diff(diff, format_name)

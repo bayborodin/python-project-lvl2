@@ -32,8 +32,7 @@ def _make_string(diff):
             string_rows.append(stringify_updated_row(row))
         elif state == 'removed':
             string_rows.append(stringify_removed_row(row))
-
-    return ''.join(string_rows)
+    return '\n'.join(string_rows)
 
 
 def _flatten_updated_row(row, complex_key):
