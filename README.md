@@ -12,7 +12,7 @@ The second training project on the Python Software Development course on [Hexlet
 
 ## How to install
 ```bash
-https://github.com/bayborodin/python-project-lvl2
+pip install git+https://github.com/bayborodin/python-project-lvl2
 ```
 
 ## Usage
