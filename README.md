@@ -38,5 +38,9 @@ Gendiff supports the output of the file comparison result in the following forma
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+Before sending a pull request, please make sure that all tests pass and that the linter has no comments on your code.
+
+Please, use ```make test``` and ```make lint``` commands for this purpose.
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
