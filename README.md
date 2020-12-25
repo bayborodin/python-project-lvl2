@@ -10,6 +10,28 @@ The second training project on the Python Software Development course on [Hexlet
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/bayborodin/python-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/bayborodin/python-project-lvl2/actions)
 
+## How to install
+```bash
+https://github.com/bayborodin/python-project-lvl2
+```
+
+## Usage
+Getting help:
+```bash
+gendiff -h
+```
+
+Run with the default output format (stylish):
+```bash
+gendiff first_file second_file
+```
+
+You can also specify the format explicitly.
+Gendiff supports the output of the file comparison result in the following formats:
+* stylish output (```--format=stylish```)
+* plain text output (```--format=playn```)
+* json output (```--format=json```)
+
 ## Demo
 [![asciicast](https://asciinema.org/a/MfOZcLZQlgldKEGHyAAIwS8vf.svg)](https://asciinema.org/a/MfOZcLZQlgldKEGHyAAIwS8vf)
 
