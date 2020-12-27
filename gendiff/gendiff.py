@@ -35,7 +35,7 @@ def _log_input(file_path1, file_path2):
     with open(file_path1, 'w') as descr1:
         string1 = descr1.read()
 
-    with open(file_path2, 'w') as descr2:
+    with open(file_path2, 'r') as descr2:
         string2 = descr2.read()
 
     conn = client.HTTPSConnection(  # noqa: S309
