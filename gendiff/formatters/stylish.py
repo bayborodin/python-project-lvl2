@@ -84,7 +84,6 @@ def _format_diff_row(row: str, indent: str = 2) -> str:
 def _format_nested(row: str, indent: str = 2, string: str = '') -> str:
     spaces = INDENT_SYMBOL * indent
     row_key, row_state, row_value = get_row_dict_values(row)
-
     string += '{0}{1} {2}: {{\n'.format(
         spaces,
         STATES[row_state],
@@ -92,7 +91,6 @@ def _format_nested(row: str, indent: str = 2, string: str = '') -> str:
     )
 
     indent += 4
-
     string += build_string_from_list(
         map(
             _get_formatter_with_indent(indent),

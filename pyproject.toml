@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hexlet-code"
-version = "0.8.4"
+version = "0.8.5"
 description = "gendiff - the second Hexlet project"
 authors = ["Nicholas Bayborodin <nicholas.bayborodin@gmail.com>"]
 packages = [
@@ -19,6 +19,7 @@ pytest-cov = "^2.10.1"
 
 [tool.poetry.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
+debug = "gendiff.scripts.debug:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0a5"]
