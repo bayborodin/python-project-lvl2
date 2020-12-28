@@ -66,7 +66,8 @@ def compare(dict1: dict, dict2: dict) -> list:
                 ),
             )
 
-    return sorted(diff, key=lambda row: row['key'])
+    # return sorted(diff, key=lambda row: row['key'])
+    return diff
 
 
 def _generate_diff_row(diff_key, diff_value, diff_state):
