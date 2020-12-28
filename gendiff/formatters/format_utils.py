@@ -107,4 +107,7 @@ def format_value(row_value: any) -> str:
     if isinstance(row_value, bool):
         return str(row_value).lower()
 
+    if isinstance(row_value, int):
+        return row_value
+
     return "'{0}'".format(row_value)
