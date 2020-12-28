@@ -14,11 +14,6 @@ def main():
     parser.add_argument('second_file', type=str)
     parser.add_argument('-f', '--format', help='set format of output')
 
-    app_version = pkg_resources.get_distribution('gendiff').version
-    parser.add_argument(
-        '-V', '--version', action='version', version=app_version,
-    )
-
     args = parser.parse_args()
     output_format = args.format
     if not output_format or output_format not in FORMATS.keys():
