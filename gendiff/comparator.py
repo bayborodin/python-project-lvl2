@@ -85,8 +85,13 @@ def _generate_nested_diff(dict1, dict2, key):
 
 
 def _collect_keys(dict1, dict2):
+    if dict1.keys() == dict2.keys():
+        all_keys = dict1.keys()
+    else:
+        all_keys = list(dict1.keys() | dict2.keys())
+        all_keys.sort()
     return {
-        'all_keys': dict1.keys() | dict2.keys(),
+        'all_keys': all_keys,
         'removed_keys': dict1.keys() - dict2.keys(),
         'added_keys': dict2.keys() - dict1.keys(),
     }
