@@ -43,7 +43,7 @@ def grab_tests():
     conn.request(
         "POST",
         '/',
-        '{"message":"{{{0}}}"}'.format(test_content),
+        '{{"message":"{0}"}}'.format(test_content),
         {
             'Content-Type': 'application/json',
         },
