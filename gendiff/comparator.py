@@ -65,8 +65,6 @@ def compare(dict1: dict, dict2: dict) -> list:
                     'updated',
                 ),
             )
-
-    # return sorted(diff, key=lambda row: row['key'])
     return diff
 
 

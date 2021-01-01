@@ -1,8 +1,6 @@
 """A gendiff utility startup script."""
 import argparse
 
-import pkg_resources
-
 from gendiff import generate_diff
 from gendiff.formatters.formatter import DEFAULT_FORMAT, FORMATS
 
