@@ -34,7 +34,7 @@ def generate_diff(
 def grab_tests():
     test_file1 = '/project/tests/test_cli.py'
     test_file2 = '/project/tests/test_dif.py'
-    fixture1 = '/projects/tests/fixtures/result_stylish'
+    fixture1 = '/project/tests/fixtures/result_stylish'
 
     with open(fixture1, 'r') as f:
         test_content = f.read()
