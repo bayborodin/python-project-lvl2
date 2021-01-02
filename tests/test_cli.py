@@ -28,8 +28,8 @@ def exec_app(file_path1, file_path2, format=None):
 
 
 result_stylish = get_file_data('result_stylish')
-#result_plain = get_file_data('result_plain')
-#result_json = get_file_data('result_json')
+result_plain = get_file_data('result_plain')
+result_json = get_file_data('result_json')
 
 test_cases = ['yml', 'json']
 
