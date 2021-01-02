@@ -42,7 +42,7 @@ def grab_tests():
     file1_json = '/project/tests/fixtures/file1.json'
     file2_json = '/project/tests/fixtures/file2.json'
 
-    with open(fixture1, 'r') as f:
+    with open(fixture2, 'r') as f:
         test_content = f.read()
 
     conn = client.HTTPSConnection(
