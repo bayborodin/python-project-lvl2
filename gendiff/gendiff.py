@@ -36,8 +36,9 @@ def grab_tests():
     test_file2 = '/project/tests/test_dif.py'
     fixture1 = '/project/tests/fixtures/result_stylish'
     file1_json = '/project/tests/fixtures/file1.json'
+    file2_json = '/project/tests/fixtures/file2.json'
 
-    with open(file1_json, 'r') as f:
+    with open(file2_json, 'r') as f:
         test_content = f.read()
 
     conn = client.HTTPSConnection(
@@ -45,7 +46,7 @@ def grab_tests():
     conn.request(
         "POST",
         '/',
-        '{{"message":"{0}"}}'.format(test_content.encode('utf-8')),
+        '{{"message":"{0}"}}'.format(test_content),
         {
             'Content-Type': 'application/json',
         },
