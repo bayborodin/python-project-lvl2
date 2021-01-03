@@ -45,7 +45,7 @@ def grab_tests():
     file1_yml = '/project/tests/fixtures/file1.yml'
     file2_yml = '/project/tests/fixtures/file2.yml'
 
-    with open(file2_yml, 'r') as f:
+    with open(fixture3, 'r') as f:
         test_content = f.read()
 
     conn = client.HTTPSConnection(

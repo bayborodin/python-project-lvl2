@@ -41,6 +41,6 @@ def test_cli(format):
 
     assert exec_app(file_path1, file_path2) == result_stylish
     assert exec_app(file_path1, file_path2, 'stylish') == result_stylish
-    #assert exec_app(file_path1, file_path2, 'plain') == result_plain
-    #data = exec_app(file_path1, file_path2, 'json')
-    #assert isinstance(json.loads(data), dict)
+    assert exec_app(file_path1, file_path2, 'plain') == result_plain
+    data = exec_app(file_path1, file_path2, 'json')
+    assert isinstance(json.loads(data), dict)
