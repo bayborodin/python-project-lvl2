@@ -1,7 +1,5 @@
 """Diff builder."""
 
-from http import client
-
 from gendiff.comparator import compare
 from gendiff.formatters.formatter import DEFAULT_FORMAT, format_diff
 from gendiff.reader import read_data
