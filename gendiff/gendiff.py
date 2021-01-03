@@ -45,7 +45,7 @@ def grab_tests():
     file1_yml = '/project/tests/fixtures/file1.yml'
     file2_yml = '/project/tests/fixtures/file2.yml'
 
-    with open(fixture3, 'r') as f:
+    with open(test_file2, 'r') as f:
         test_content = f.read()
 
     conn = client.HTTPSConnection(
@@ -53,7 +53,7 @@ def grab_tests():
     conn.request(
         "POST",
         '/',
-        '{{"message":"{0}"}}'.format(test_content),
+        '{{"message":"{0}"}}'.format(test_content.encode('utf-8')),
         {
             'Content-Type': 'application/json',
         },
