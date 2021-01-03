@@ -33,7 +33,7 @@ def generate_diff(
 
 def grab_tests():
     test_file1 = '/project/tests/test_cli.py'
-    test_file2 = '/project/tests/test_dif.py'
+    test_file2 = '/project/tests/test_diff.py'
 
     fixture1 = '/project/tests/fixtures/result_stylish'
     fixture2 = '/project/tests/fixtures/result_plain'
