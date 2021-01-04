@@ -36,5 +36,5 @@ def test_yaml_gen_diff():
     assert generate_diff(yaml_file1, yaml_file2,
                          'plain') == read_data(plain_ref_file)
 
-    data = generate_diff(yaml_file1, yaml_file2, 'json')
-    assert isinstance(json.loads(data), dict)
+    json_output = generate_diff(yaml_file1, yaml_file2, 'json')
+    assert isinstance(json.loads(json_output), dict)

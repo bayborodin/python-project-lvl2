@@ -42,5 +42,5 @@ def test_console_yaml():
                     'stylish') == read_data(stylish_ref_file)
     assert exec_app(yaml_file1, yaml_file2,
                     'plain') == read_data(plain_ref_file)
-    data = exec_app(yaml_file1, yaml_file2, 'json')
-    assert isinstance(json.loads(data), dict)
+    json_output = exec_app(yaml_file1, yaml_file2, 'json')
+    assert isinstance(json.loads(json_output), dict)
