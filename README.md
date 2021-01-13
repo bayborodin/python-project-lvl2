@@ -2,6 +2,7 @@
 [![Github Actions Status](https://github.com/bayborodin/python-project-lvl2/workflows/Python%20CI/badge.svg)](https://github.com/bayborodin/python-project-lvl2/actions)
 [![Actions Status](https://github.com/bayborodin/python-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/bayborodin/python-project-lvl2/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a4bb2bcb4ba0d791eb18/maintainability)](https://codeclimate.com/github/bayborodin/python-project-lvl2/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/5e093a070ad425fe62f1/test_coverage)](https://codeclimate.com/github/bayborodin/python-project-lvl2/test_coverage)
 [![wemake-python-styleguide](https://img.shields.io/badge/style-wemake-000000.svg)](https://github.com/wemake-services/wemake-python-styleguide)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
