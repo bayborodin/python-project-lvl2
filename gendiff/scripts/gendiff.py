@@ -1,5 +1,6 @@
 """A gendiff utility startup script."""
 import argparse
+import sys
 
 from gendiff import generate_diff
 from gendiff.formatters.formatter import DEFAULT_FORMAT, FORMATS
@@ -10,16 +11,25 @@ def main():
     parser = argparse.ArgumentParser(description='Generate diff')
     parser.add_argument('first_file', type=str)
     parser.add_argument('second_file', type=str)
-    parser.add_argument('-f', '--format', help='set format of output')
+    parser.add_argument(
+        '-f',
+        '--format',
+        choices=FORMATS.keys(),
+        default=DEFAULT_FORMAT,
+        help='set format of output',
+    )
 
     args = parser.parse_args()
     output_format = args.format
-    if not output_format or output_format not in FORMATS.keys():
-        output_format = DEFAULT_FORMAT
 
-    diff = generate_diff(
-        args.first_file, args.second_file, format_name=output_format,
-    )
+    try:
+        diff = generate_diff(
+            args.first_file, args.second_file, format_name=output_format,
+        )
+    except ValueError as ex:
+        print('Something bad happend: {0}'.format(ex))
+        sys.exit(1)
+
     print(diff)
 
 

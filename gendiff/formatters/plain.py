@@ -2,6 +2,11 @@
 
 COMPLEX_VALUE = '[complex value]'
 
+STATE_ADDED = 'added'
+STATE_REMOVED = 'removed'
+STATE_UNMODIFIED = 'unmodified'
+STATE_UPDATED = 'updated'
+
 
 def format_diff(diff: list) -> str:
     """
@@ -56,11 +61,11 @@ def _make_string(diff):
     string_rows = []
     for row in diff:
         state = row[-1]
-        if state == 'added':
+        if state == STATE_ADDED:
             string_rows.append(_stringify_added_row(row))
-        elif state == 'updated':
+        elif state == STATE_UPDATED:
             string_rows.append(_stringify_updated_row(row))
-        elif state == 'removed':
+        elif state == STATE_REMOVED:
             string_rows.append(_stringify_removed_row(row))
     return '\n'.join(string_rows)
 
@@ -92,10 +97,10 @@ def _flatten_diff(diff, parent_key='', sep='.'):
         new_key = parent_key + sep + row['key'] if parent_key else row['key']
         if row_state == 'removed':
             flat_items.append((new_key, row_state))
-        elif row_state == 'added':
+        elif row_state == STATE_ADDED:
             flat_items.append(_flatten_added_row(row, new_key))
-        elif row_state == 'unmodified' and isinstance(row_value, list):
+        elif row_state == STATE_UNMODIFIED and isinstance(row_value, list):
             flat_items.extend(_flatten_diff(row_value, new_key, sep=sep))
-        elif row_state == 'updated':
+        elif row_state == STATE_UPDATED:
             flat_items.append(_flatten_updated_row(row, new_key))
     return flat_items
