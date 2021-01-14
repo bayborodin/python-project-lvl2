@@ -18,11 +18,12 @@ def read_data(file_path: str) -> dict:
     Returns:
         File content, parsed to the dictionary.
     """
-    extension = os.path.splitext(file_path)[1]
+    _, extension = os.path.splitext(file_path)
+    extension = extension.lower()
 
     with open(file_path, 'r') as file_descriptor:
         if extension == '.json':
             return json.load(file_descriptor)
         elif extension in ('.yml', '.yaml'):  # noqa: WPS510
             return yaml.safe_load(file_descriptor)
-        raise ValueError
+        raise ValueError('Unknown file format: {0}'.format(extension))

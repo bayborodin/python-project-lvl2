@@ -12,7 +12,7 @@ FORMATS = types.MappingProxyType({
 })
 
 
-def format_diff(diff: list, style: str = DEFAULT_FORMAT) -> any:
+def format_diff(diff: list, style: str = DEFAULT_FORMAT) -> str:
     """
     Format the diff output with a given format style.
 

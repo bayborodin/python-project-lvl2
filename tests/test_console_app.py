@@ -1,11 +1,6 @@
 import json
+import pytest
 import subprocess
-
-
-json_file1 = 'tests/fixtures/file1.json'
-json_file2 = 'tests/fixtures/file2.json'
-yaml_file1 = 'tests/fixtures/file1.yml'
-yaml_file2 = 'tests/fixtures/file2.yml'
 
 json_ref_file = 'tests/fixtures/json_reference_output.txt'
 plain_ref_file = 'tests/fixtures/plain_reference_output.txt'
@@ -26,21 +21,13 @@ def exec_app(file_path1, file_path2, format=None):
     return subprocess.check_output(args, universal_newlines=True)
 
 
-def test_console_json():
-    assert exec_app(json_file1, json_file2) == read_data(stylish_ref_file)
-    assert exec_app(json_file1, json_file2,
-                    'stylish') == read_data(stylish_ref_file)
-    assert exec_app(json_file1, json_file2,
-                    'plain') == read_data(plain_ref_file)
-    data = exec_app(json_file1, json_file2, 'json')
+@pytest.mark.parametrize('file_format', ['json', 'yml'])
+def test_console(file_format):
+    file1 = 'tests/fixtures/file1.{0}'.format(file_format)
+    file2 = 'tests/fixtures/file2.{0}'.format(file_format)
+
+    assert exec_app(file1, file2) == read_data(stylish_ref_file)
+    assert exec_app(file1, file2, 'stylish') == read_data(stylish_ref_file)
+    assert exec_app(file1, file2, 'plain') == read_data(plain_ref_file)
+    data = exec_app(file1, file2, 'json')
     assert isinstance(json.loads(data), dict)
-
-
-def test_console_yaml():
-    assert exec_app(yaml_file1, yaml_file2) == read_data(stylish_ref_file)
-    assert exec_app(yaml_file1, yaml_file2,
-                    'stylish') == read_data(stylish_ref_file)
-    assert exec_app(yaml_file1, yaml_file2,
-                    'plain') == read_data(plain_ref_file)
-    json_output = exec_app(yaml_file1, yaml_file2, 'json')
-    assert isinstance(json.loads(json_output), dict)

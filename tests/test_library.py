@@ -1,11 +1,7 @@
 import json
+import pytest
 
 from gendiff.gendiff import generate_diff
-
-json_file1 = 'tests/fixtures/file1.json'
-json_file2 = 'tests/fixtures/file2.json'
-yaml_file1 = 'tests/fixtures/file1.yml'
-yaml_file2 = 'tests/fixtures/file2.yml'
 
 json_ref_file = 'tests/fixtures/json_reference_output.txt'
 plain_ref_file = 'tests/fixtures/plain_reference_output.txt'
@@ -18,23 +14,14 @@ def read_data(file_name):
     return result
 
 
-def test_json_gen_diff():
-    assert generate_diff(json_file1, json_file2) == read_data(stylish_ref_file)
-    assert generate_diff(json_file1, json_file2,
-                         'stylish') == read_data(stylish_ref_file)
-    assert generate_diff(json_file1, json_file2,
-                         'plain') == read_data(plain_ref_file)
+@pytest.mark.parametrize('file_format', ['json', 'yml'])
+def test_gen_diff(file_format):
+    file1 = 'tests/fixtures/file1.{0}'.format(file_format)
+    file2 = 'tests/fixtures/file2.{0}'.format(file_format)
 
-    data = generate_diff(json_file1, json_file2, 'json')
+    assert generate_diff(file1, file2) == read_data(stylish_ref_file)
+    assert generate_diff(file1, file2, 'stylish') == read_data(stylish_ref_file)
+    assert generate_diff(file1, file2, 'plain') == read_data(plain_ref_file)
+
+    data = generate_diff(file1, file2, 'json')
     assert isinstance(json.loads(data), dict)
-
-
-def test_yaml_gen_diff():
-    assert generate_diff(yaml_file1, yaml_file2) == read_data(stylish_ref_file)
-    assert generate_diff(yaml_file1, yaml_file2,
-                         'stylish') == read_data(stylish_ref_file)
-    assert generate_diff(yaml_file1, yaml_file2,
-                         'plain') == read_data(plain_ref_file)
-
-    json_output = generate_diff(yaml_file1, yaml_file2, 'json')
-    assert isinstance(json.loads(json_output), dict)
