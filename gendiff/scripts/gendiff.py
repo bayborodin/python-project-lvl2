@@ -26,7 +26,7 @@ def main():
         diff = generate_diff(
             args.first_file, args.second_file, format_name=output_format,
         )
-    except ValueError as ex:
+    except ValueError as ex:  # except Exeption
         print('Something bad happend: {0}'.format(ex))
         sys.exit(1)
 
